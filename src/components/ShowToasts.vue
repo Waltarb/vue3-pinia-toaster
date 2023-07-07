@@ -9,7 +9,7 @@
             :key="toast.text"
           >
             <ToastIconHandler
-                :name="toastIcons[toast.type] as TIconName"
+                :name="toastIcons[toast.type]"
               class="toaster__inner-icon"
             />
 
@@ -27,7 +27,8 @@
 import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
 
 // krijg deze nog niet aan de praat had de svg's netzogoed direct kunnen importen
-import ToastIconHandler, {TIconName} from "./ToastIconHandler.vue";
+// rollup heeftnogal moeite met het importeren van svg's dynamisch
+import ToastIconHandler from "./ToastIconHandler.vue";
 
 const toastTypes: Record<TToastType, string> = {
   warning: "warning",
