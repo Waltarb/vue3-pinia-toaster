@@ -8,7 +8,7 @@
             :class="['toaster__inner', toastTypes[toast.type]]"
             :key="toast.text"
           >
-            <Icon
+            <ToastIconHandler
               :name="toastIcons[toast.type]"
               class="toaster__inner-icon"
             />
@@ -26,19 +26,22 @@
 <script setup lang="ts">
 import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
 
-  const toastTypes: Record<TToastType, string> = {
-    warning: "warning",
-    error: "error",
-    success: "success",
-  };
+// krijg deze nog niet aan de praat had de svg's netzogoed direct kunnen importen
+import ToastIconHandler from "./ToastIconHandler.vue";
 
-  const toastIcons: Record<TToastType, string> = {
-    error: "toast-error",
-    warning: "toast-warning",
-    success: "toast-success",
-  };
+const toastTypes: Record<TToastType, string> = {
+  warning: "warning",
+  error: "error",
+  success: "success",
+};
 
-  const toastStore = useToasterStore();
+const toastIcons: Record<TToastType, string> = {
+  error: "toast-error",
+  warning: "toast-warning",
+  success: "toast-success",
+};
+
+const toastStore = useToasterStore();
 </script>
 
 <style scoped lang="scss">
@@ -65,16 +68,16 @@ import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
   }
 
   &__inner {
-    --color: black;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    border-radius: 0.2rem;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border-radius: 0.3rem;
     border: 1px solid transparent;
-    background-color: white;
+    background-color: var(--color);
     padding: 2.2rem 1.6rem;
     border-color: var(--color);
-    color: var(--color);
+    color: white;
     svg {
       fill: var(--color);
       stroke: var(--color);
@@ -100,7 +103,6 @@ import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
     &-text {
       font-size: 1.5rem;
       font-weight: 500;
-      
     }
   }
 }
