@@ -9,7 +9,7 @@
             :key="toast.text"
           >
             <ToastIconHandler
-              :name="toastIcons[toast.type]"
+                :name="toastIcons[toast.type] as TIconName"
               class="toaster__inner-icon"
             />
 
@@ -27,7 +27,7 @@
 import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
 
 // krijg deze nog niet aan de praat had de svg's netzogoed direct kunnen importen
-import ToastIconHandler from "./ToastIconHandler.vue";
+import ToastIconHandler, {TIconName} from "./ToastIconHandler.vue";
 
 const toastTypes: Record<TToastType, string> = {
   warning: "warning",
