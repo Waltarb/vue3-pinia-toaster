@@ -7,9 +7,9 @@ import { defineAsyncComponent } from "vue";
 
 export type TIconName = "toast-error" | "toast-warning" | "toast-success";
 
-const props = defineProps<{ name: TIconName }>();
+const props = defineProps<{ name: string }>();
 
 const icon = defineAsyncComponent(
-  () => import(`./assets/icons/toastIcons/${props.name}.svg`)
+  () => import(`../assets/icons/toastIcons/${props.name}.svg` )
 );
 </script>

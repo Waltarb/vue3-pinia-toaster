@@ -9,7 +9,7 @@
             :key="toast.text"
           >
             <ToastIconHandler
-                :name="toastIcons[toast.type]"
+              :name="toastIcons[toast.type]"
               class="toaster__inner-icon"
             />
 
@@ -25,9 +25,6 @@
 
 <script setup lang="ts">
 import useToasterStore, { TToastType } from "../stores/useToasterStore.ts";
-
-// krijg deze nog niet aan de praat had de svg's netzogoed direct kunnen importen
-// rollup heeftnogal moeite met het importeren van svg's dynamisch
 import ToastIconHandler from "./ToastIconHandler.vue";
 
 const toastTypes: Record<TToastType, string> = {
@@ -74,14 +71,17 @@ const toastStore = useToasterStore();
     justify-content: space-between;
     margin-bottom: 0.5rem;
     border-radius: 0.3rem;
+    max-height: 2rem;
     border: 1px solid transparent;
     background-color: var(--color);
     padding: 2.2rem 1.6rem;
     border-color: var(--color);
     color: white;
     svg {
+      position: relative;
+      left: -0.5rem;
       fill: var(--color);
-      stroke: var(--color);
+      stroke: black;
     }
 
     &.success {
